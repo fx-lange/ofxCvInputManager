@@ -19,11 +19,19 @@ void ofxCvInputManager::setup(float w, float h){
 		width = w;
 		height = h;
 
+		bStopable = false;
+		bChangeSettings = false;
+
 		colorImg.allocate(width,height);
 		ofRegisterKeyEvents(this);
 	};
 
-void ofxCvInputManager::update(){
+bool ofxCvInputManager::update(){
+	if(!bPlay && !bChangeSettings){
+		return false;
+	}
+
+	bNewFrame = false;
 
 	ofxCvInputSource * input = inputs[inputIdx];
 
@@ -35,16 +43,18 @@ void ofxCvInputManager::update(){
 			bPlay = false;
 			setPaused(true);
 			videoInput->nextFrame();
+			bNewFrame = true;
 			eNextFrame = false;
 
 		}else if(ePrevFrame){
 			bPlay = false;
 			setPaused(true);
 			videoInput->prevFrame();
+			bNewFrame = true;
 			ePrevFrame = false;
 		}
 
-		videoInput->useFrame();
+		bNewFrame = videoInput->useFrame() || bNewFrame;
 
 	}else if(input->type == TYPE_LiveVideo){
 
@@ -52,11 +62,18 @@ void ofxCvInputManager::update(){
 
 	}
 
+
+	return bNewFrame || bChangeSettings;
 }
 
 void ofxCvInputManager::draw(float x, float y){
 	ofxCvInputSource * input = inputs[inputIdx];
 	input->draw(x,y);
+	input->drawDataLayer(x,y);
+}
+
+void ofxCvInputManager::drawExtraData(float x, float y){
+	ofxCvInputSource * input = inputs[inputIdx];
 	input->drawDataLayer(x,y);
 }
 
@@ -74,28 +91,34 @@ void ofxCvInputManager::previousFrame(){
 	ePrevFrame =  true;
 }
 
-ofxCvColorImage * ofxCvInputManager::getInputImage(){
-	return NULL;
-}
-
 void ofxCvInputManager::keyPressed(ofKeyEventArgs & e){
 		switch (e.key) {
 			case OF_KEY_LEFT:
 				ePrevFrame = true;
+				bPlay = true;
 				break;
 			case OF_KEY_RIGHT:
 				eNextFrame = true;
+				bPlay = true;
 				break;
 			case 'p':
 				togglePaused();
+				break;
+			case 'o':
+				bChangeSettings = !bChangeSettings;
 				break;
 			case 'r':
 				if(inputs[inputIdx]->type == TYPE_VideoPlayer){
 					((ofxCvVideoInput*)inputs[inputIdx])->firstFrame();
 				}
 				break;
+			case 'i':
+				bStopable = !bStopable;
+				break;
 			default:
 				break;
 		}
+
+		//TODO draw/explain interface
 }
 

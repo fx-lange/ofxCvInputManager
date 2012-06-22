@@ -23,19 +23,33 @@ public:
 		inputs.push_back(source);
 	}
 
-	//get color image to work with
-	ofxCvColorImage * getInputImage();
+//	//get color image to work with
+//	ofxCvColorImage * getInputImage();
+	unsigned char * getPixels(){
+		return inputs[inputIdx]->getPixels();
+	}
 
 	//update manager -> eg. play current input player
-	void update();
+	bool update();
 
 	void draw(float x = 0,float y = 0);
+	void drawExtraData(float x = 0, float y = 0);
 
 	void setPaused(bool paused);
+
+	void debugStop(){
+		if(bStopable)
+			setPaused(true);
+
+	}
 
 	void togglePaused(){
 		bPlay = !bPlay;
 		setPaused(!bPlay);
+	}
+
+	bool isNewFrame(){
+		return inputs[inputIdx]->isNewFrame();
 	}
 
 	void nextFrame();
@@ -47,10 +61,12 @@ public:
 protected:
 	float width, height;
 
-	bool bPlay;
+	bool bPlay, bNewFrame, bChangeSettings;
 	bool eNextFrame;
 	bool ePrevFrame;
 	bool eFirstFrame;
+
+	bool bStopable;
 
 	int inputIdx;
 	vector<ofxCvInputSource *> inputs;

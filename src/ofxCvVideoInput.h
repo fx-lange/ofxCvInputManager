@@ -54,6 +54,10 @@ public:
 		player.firstFrame();
 	}
 
+	virtual bool isNewFrame(){
+		return player.isFrameNew();
+	}
+
 	virtual void draw(float x = 0, float y = 0){
 		player.draw(x,y);
 	}
@@ -61,6 +65,10 @@ public:
 	virtual void setPaused(bool paused){
 		bPlay = !paused;
 		player.setPaused(paused);
+	}
+
+	virtual unsigned char * getPixels(){
+		return player.getPixels();
 	}
 
 protected:

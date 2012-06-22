@@ -33,6 +33,10 @@ public:
 	virtual void drawDataLayer(float x = 0, float y = 0){};
 
 	virtual void setPaused(bool paused) = 0;
+
+	virtual bool isNewFrame() = 0;
+
+	virtual unsigned char * getPixels() = 0;
 };
 
 #endif /* OFXCVINPUTSOURCE_H_ */
