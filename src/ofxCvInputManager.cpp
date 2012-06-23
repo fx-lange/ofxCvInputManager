@@ -111,6 +111,7 @@ void ofxCvInputManager::keyPressed(ofKeyEventArgs & e){
 				if(inputs[inputIdx]->type == TYPE_VideoPlayer){
 					((ofxCvVideoInput*)inputs[inputIdx])->firstFrame();
 				}
+				setPaused(false);
 				break;
 			case 'i':
 				bStopable = !bStopable;
