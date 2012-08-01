@@ -23,6 +23,7 @@ Todo
 
 *	more inputs (cams, snapshots)
 *	more controls (speed, play backwards, save frame as snapshot)
+*	UI elements
 
 
 
