@@ -9,7 +9,7 @@ Features
 ========
 
 *	control and switch between different inputs
-*	inputs: video only (at the moment)
+*	inputs: video player and video grabber
 *	controls: play, stop, frame-by-frame (both directions)
 *	additional wrapper like getPixels()
 
