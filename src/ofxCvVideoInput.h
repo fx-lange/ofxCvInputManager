@@ -15,9 +15,11 @@ public:
 
 	ofVideoPlayer player;
 
-	ofxCvVideoInput(){}
-	virtual ~ofxCvVideoInput(){
+	ofxCvVideoInput(){
 		type = TYPE_VideoPlayer;
+	}
+
+	virtual ~ofxCvVideoInput(){
 	}
 
 	ofxCvVideoInput(string videoFilename){

@@ -57,7 +57,8 @@ bool ofxCvInputManager::update(){
 		bNewFrame = videoInput->useFrame() || bNewFrame;
 
 	}else if(input->type == TYPE_LiveVideo){
-
+		input->update();
+		bNewFrame = input->useFrame() || bNewFrame;
 	}else if(input->type == TYPE_Image){
 
 	}
@@ -100,6 +101,11 @@ void ofxCvInputManager::keyPressed(ofKeyEventArgs & e){
 			case OF_KEY_RIGHT:
 				eNextFrame = true;
 				bPlay = true;
+				break;
+			case OF_KEY_UP:
+				setPaused(true);
+				inputIdx = (inputIdx + 1) % inputs.size();
+				setPaused(false);
 				break;
 			case 'p':
 				togglePaused();
