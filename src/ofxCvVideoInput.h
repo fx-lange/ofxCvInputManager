@@ -17,6 +17,7 @@ public:
 
 	ofxCvVideoInput(){
 		type = TYPE_VideoPlayer;
+		bPlay = false;
 	}
 
 	virtual ~ofxCvVideoInput(){
