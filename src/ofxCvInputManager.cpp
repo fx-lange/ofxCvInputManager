@@ -10,6 +10,12 @@
 ofxCvInputManager::ofxCvInputManager() {
 	bPlay = true;
 	inputIdx = 0;
+	eFirstFrame = eNextFrame = ePrevFrame = false;
+	bStopable = false;
+	bChangeSettings = false;
+	width = 0;
+	height = 0;
+	bNewFrame = false;
 }
 
 ofxCvInputManager::~ofxCvInputManager() {
@@ -19,10 +25,6 @@ void ofxCvInputManager::setup(float w, float h){
 		width = w;
 		height = h;
 
-		bStopable = false;
-		bChangeSettings = false;
-
-		colorImg.allocate(width,height);
 		ofRegisterKeyEvents(this);
 	};
 

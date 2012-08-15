@@ -9,7 +9,6 @@
 #ifndef OFXCVINPUTMANAGER_H_
 #define OFXCVINPUTMANAGER_H_
 
-#include "ofxOpenCv.h"
 #include "ofxCvVideoInput.h"
 
 class ofxCvInputManager {
@@ -70,8 +69,6 @@ protected:
 
 	int inputIdx;
 	vector<ofxCvInputSource *> inputs;
-
-	ofxCvColorImage colorImg;
 };
 
 #endif /* OFXCVINPUTMANAGER_H_ */
