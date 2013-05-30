@@ -1,11 +1,3 @@
-/*
- * ofxCvInputManager.h
- *
- *  Created on: Jun 20, 2012
- *      Author: spta32
- *      TODO inputs with different size
- */
-
 #ifndef OFXCVINPUTMANAGER_H_
 #define OFXCVINPUTMANAGER_H_
 
@@ -18,17 +10,19 @@ public:
 	ofxCvInputManager();
 	virtual ~ofxCvInputManager();
 
-	void setup(float w, float h);
+	void setup();
 
 	void addInputSource(ofxCvInputSource * source){
 		inputs.push_back(source);
 	}
 
 //	//get color image to work with
-//	ofxCvColorImage * getInputImage();
 	unsigned char * getPixels(){
 		return inputs[inputIdx]->getPixels();
 	}
+
+	float getInputWidth();
+	float getInputHeight();
 
 	//update manager -> eg. play current input player
 	bool update();
@@ -60,8 +54,6 @@ public:
 	virtual void keyReleased(ofKeyEventArgs & e){}
 
 protected:
-	float width, height;
-
 	bool bPlay, bNewFrame, bChangeSettings;
 	bool eNextFrame;
 	bool ePrevFrame;

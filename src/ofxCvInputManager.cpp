@@ -13,18 +13,13 @@ ofxCvInputManager::ofxCvInputManager() {
 	eFirstFrame = eNextFrame = ePrevFrame = false;
 	bStopable = false;
 	bChangeSettings = false;
-	width = 0;
-	height = 0;
 	bNewFrame = false;
 }
 
 ofxCvInputManager::~ofxCvInputManager() {
 }
 
-void ofxCvInputManager::setup(float w, float h){
-		width = w;
-		height = h;
-
+void ofxCvInputManager::setup(){
 		ofRegisterKeyEvents(this);
 	};
 
@@ -92,6 +87,14 @@ void ofxCvInputManager::nextFrame(){
 
 void ofxCvInputManager::previousFrame(){
 	ePrevFrame =  true;
+}
+
+float ofxCvInputManager::getInputWidth(){
+	return inputs[inputIdx]->getWidth();
+}
+
+float ofxCvInputManager::getInputHeight(){
+	return inputs[inputIdx]->getHeight();
 }
 
 void ofxCvInputManager::keyPressed(ofKeyEventArgs & e){

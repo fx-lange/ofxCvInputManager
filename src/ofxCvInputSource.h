@@ -37,6 +37,8 @@ public:
 	virtual bool isNewFrame() = 0;
 
 	virtual unsigned char * getPixels() = 0;
+	virtual float getWidth() = 0;
+	virtual float getHeight() = 0;
 };
 
 #endif /* OFXCVINPUTSOURCE_H_ */

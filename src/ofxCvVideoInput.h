@@ -73,6 +73,8 @@ public:
 	virtual unsigned char * getPixels(){
 		return player.getPixels();
 	}
+	virtual float getWidth(){return player.width;}
+	virtual float getHeight(){return player.height;}
 
 protected:
 	bool bPlay;

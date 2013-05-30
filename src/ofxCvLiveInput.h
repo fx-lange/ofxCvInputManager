@@ -52,6 +52,8 @@ public:
 	virtual unsigned char * getPixels(){
 		return videoGrabber.getPixels();
 	}
+	virtual float getWidth(){return videoGrabber.width;}
+	virtual float getHeight(){return videoGrabber.height;}
 
 protected:
 };
