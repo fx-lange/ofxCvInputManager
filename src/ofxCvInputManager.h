@@ -10,6 +10,8 @@
 #define OFXCVINPUTMANAGER_H_
 
 #include "ofxCvVideoInput.h"
+#include "ofxCvLiveInput.h"
+#include "ofxCvImageInput.h"
 
 class ofxCvInputManager {
 public:
