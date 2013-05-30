@@ -23,6 +23,7 @@ public:
 
 	float getInputWidth();
 	float getInputHeight();
+	string getName();
 
 	//update manager -> eg. play current input player
 	bool update();

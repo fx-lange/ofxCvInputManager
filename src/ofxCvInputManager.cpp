@@ -98,6 +98,10 @@ float ofxCvInputManager::getInputHeight(){
 	return inputs[inputIdx]->getHeight();
 }
 
+string ofxCvInputManager::getName(){
+	return inputs[inputIdx]->getName();
+}
+
 void ofxCvInputManager::nextInput(){
 	setPaused(true);
 	inputIdx = (inputIdx + 1) % inputs.size();

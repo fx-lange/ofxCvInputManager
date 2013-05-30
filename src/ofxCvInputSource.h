@@ -39,6 +39,7 @@ public:
 	virtual unsigned char * getPixels() = 0;
 	virtual float getWidth() = 0;
 	virtual float getHeight() = 0;
+	virtual string getName(){return "";}
 };
 
 #endif /* OFXCVINPUTSOURCE_H_ */

@@ -54,6 +54,7 @@ public:
 	}
 	virtual float getWidth(){return videoGrabber.width;}
 	virtual float getHeight(){return videoGrabber.height;}
+	virtual string getName(){ return "live"; }
 
 protected:
 };

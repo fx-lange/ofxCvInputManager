@@ -21,7 +21,9 @@ public:
 	virtual unsigned char * getPixels();
 	virtual float getWidth(){return image.width;}
 	virtual float getHeight(){return image.height;}
+	virtual string getName(){ return name;}
 
 	ofImage image;
+	string name;
 };
 #endif /* OFXCVIMAGEINPUT_H_ */

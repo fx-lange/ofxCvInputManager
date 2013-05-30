@@ -32,6 +32,7 @@ public:
 		player.play();
 		bPlay = true;
 		type = TYPE_VideoPlayer;
+		name = videoFilename;
 	}
 
 	virtual void close(){
@@ -75,9 +76,11 @@ public:
 	}
 	virtual float getWidth(){return player.width;}
 	virtual float getHeight(){return player.height;}
+	virtual string getName(){ return name;}
 
 protected:
 	bool bPlay;
+	string name;
 };
 
 #endif /* OFXCVVIDEOINPUT_H_ */
