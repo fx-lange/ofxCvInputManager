@@ -14,6 +14,7 @@ ofxCvInputManager::ofxCvInputManager() {
 	bStopable = false;
 	bChangeSettings = false;
 	bNewFrame = false;
+	bInputChanged = true;
 }
 
 ofxCvInputManager::~ofxCvInputManager() {
@@ -97,6 +98,13 @@ float ofxCvInputManager::getInputHeight(){
 	return inputs[inputIdx]->getHeight();
 }
 
+void ofxCvInputManager::nextInput(){
+	setPaused(true);
+	inputIdx = (inputIdx + 1) % inputs.size();
+	setPaused(false);
+	bInputChanged = true;
+}
+
 void ofxCvInputManager::keyPressed(ofKeyEventArgs & e){
 		switch (e.key) {
 			case OF_KEY_LEFT:
@@ -108,9 +116,7 @@ void ofxCvInputManager::keyPressed(ofKeyEventArgs & e){
 				bPlay = true;
 				break;
 			case OF_KEY_UP:
-				setPaused(true);
-				inputIdx = (inputIdx + 1) % inputs.size();
-				setPaused(false);
+				nextInput();
 				break;
 			case 'p':
 				togglePaused();

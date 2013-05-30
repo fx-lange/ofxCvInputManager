@@ -50,6 +50,9 @@ public:
 	void nextFrame();
 	void previousFrame();
 
+	void nextInput();
+	bool bInputChanged;
+
 	virtual void keyPressed(ofKeyEventArgs & e);
 	virtual void keyReleased(ofKeyEventArgs & e){}
 
